@@ -1,0 +1,31 @@
+#=======================================================================================================================
+# This workflow will run tests on PRs when a PR is opened OR when you push a new commit.
+# This means GitHub will ONLY build PR branches and not just any old branch.
+#
+# Users may disable the checks on their PR by adding the label 'skip-checks' to the PR.
+# Users may re-enable the checks by removing the label 'skip-checks' from the PR.
+# The corresponding 'unlabel' event will cause the checks to run.
+# NB you should enable status checks in branch protection rules to prevent merging of PRs with the 'skip-checks' label.
+#=======================================================================================================================
+name: Just testing a PR workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, unlabeled]
+  workflow_dispatch:
+  merge_group:
+jobs:
+  just-log-it:
+    name: Just log it
+    runs-on: ["ubuntu-latest"]
+    if: |
+      (github.event.action == 'unlabeled' && github.event.label.name == 'skip-checks') ||
+      (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'skip-checks'))
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
+# NB we should obiously be doing some linting and testing but this is just to illustrate trigger conditions
