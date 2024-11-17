@@ -1,6 +1,6 @@
 <h1> GitHub Actions V2 </h1>
 
-<img src="./img/maxresdefault.jpg" width="500"/>
+<img src="./img/maxresdefault.png" width="500"/>
 
 - A newer version of GitHub actions sandbox.
 
