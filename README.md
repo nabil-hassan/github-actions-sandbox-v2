@@ -1,12 +1,12 @@
 <h1> GitHub Actions V2 </h1>
 
+<img src="./img/maxresdefault.jpg" width="500"/>
+
 - A newer version of GitHub actions sandbox.
 
 - This readme acts as a guide to the key areas of the repository.
 
-NB please see the [Forumlas](./0-formulas) sections for examples of how to address common requirements. 
-
-<img src="./img/maxresdefault.jpg" width="500"/>
+NB please see the [Forumlas](./0-formulas) sections for examples of how to address common requirements.
 
 <h1>Table of contents</h1>
 
