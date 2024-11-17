@@ -81,6 +81,8 @@ The 3 key components in a GitHub Action are:
 - jobs
 - steps
 
+NB workflow files are written in YAML and must be stored in the `.github/workflows` directory.
+
 The block below illustrates this structure, which is hierarchical:
 
 ```yaml
