@@ -2,9 +2,9 @@
 
 <img src="./img/maxresdefault.png" width="500"/>
 
-- A newer version of GitHub actions sandbox.
+A newer version of GitHub actions sandbox.
 
-- This readme acts as a guide to the key areas of the repository.
+This readme acts as a guide to the key areas of the repository.
 
 NB please see the [Forumlas](./0-formulas) sections for examples of how to address common requirements.
 
