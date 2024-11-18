@@ -1,0 +1,22 @@
+name: Workflow runners
+on:
+  workflow_dispatch:
+jobs:
+  run-on-ubuntu:
+    name: Run on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Ubuntu OS
+        run: echo "This job is running on ${{ runner.os }}"
+  run-on-mac:
+    name: Run on MacOS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Mac OS
+        run: echo "This job is running on ${{ runner.os }}"
+  run-on-windows:
+    name: Run on MacOS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Mac OS
+        run: echo "This job is running on ${{ runner.os }}"
