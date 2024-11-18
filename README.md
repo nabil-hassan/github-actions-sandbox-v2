@@ -11,15 +11,20 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 <h1>Table of contents</h1>
 
 <!-- TOC -->
-* [Cool things](#cool-things)
+* [Things to remember](#things-to-remember)
 * [Getting started](#getting-started)
 * [Event Triggers](#event-triggers)
 * [Workflow Runners](#workflow-runners)
+* [Third Party Actions](#third-party-actions)
 <!-- TOC -->
 
-# Cool things
+# Things to remember
 
 Reverting PRs in case of failure.
+
+Using the `working directory` directive to avoid unnecessary cd commands.
+
+Using `defaults` to specify default values for jobs including working directory etc ([details](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#defaults))
 
 # Getting started
 
@@ -63,3 +68,13 @@ GitHub provides Windows, Ubuntu and Mac runners.
 - [Example workflow](./.github/workflows/03-workflow-runners.yaml)
 
 # Third Party Actions
+
+tHub offers third party actions, which can be used in our workflows to help with simplify tasks.
+
+Instead of using `run` when specifying a step, we instead you `uses`.
+
+The third party actions can accept option inputs via the `with` keyword.
+
+- [Using the GitHub marketplace to find and inspect actions](./4-third-party-actions/third-party-actions.md#github-marketplace)
+- [Workflow example to setup a React application](./.github/workflows/04-third-party-actions.yaml)
+
