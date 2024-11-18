@@ -16,6 +16,7 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 * [Event Triggers](#event-triggers)
 * [Workflow Runners](#workflow-runners)
 * [Third Party Actions](#third-party-actions)
+* [Event Filters & Activity Types](#event-filters--activity-types)
 <!-- TOC -->
 
 # Things to remember
@@ -81,4 +82,4 @@ The third party actions can accept option inputs via the `with` keyword.
 - [Using dependency caching to speed up workflows](./4-third-party-actions/third-party-actions.md#dependency-caching)
 - [Workflow example to setup a React application](./.github/workflows/04-third-party-actions.yaml)
 
-
+# Event Filters & Activity Types
