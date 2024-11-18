@@ -27,9 +27,11 @@ The key types are:
 
 Workflows can also be run __on a schedule__ or manually via workflow dispatch using the `schedule` trigger type.
 
+NB the most frequent you can run is every 15 minutes - using a more frequent expression means the workflow will not run.
+
 ```yaml
-# Run every 5 minutes
+# Run every 15 minutes
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/15 * * * *"
 ```

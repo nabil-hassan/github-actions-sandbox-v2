@@ -38,6 +38,6 @@ Event triggers specify the conditions under which a workflow is started and opti
 
 By default event triggers run for any branch which match the trigger conditions.
 
-Workflows can also be started manually using `workflow dispatch` or run on a CRON schedule.
+Workflows can also be started manually using `workflow dispatch` or run on a CRON schedule using `schedule`.
 
 
