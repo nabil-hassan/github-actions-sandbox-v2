@@ -2,7 +2,7 @@
 
 As we saw in the previous section, the `on` keyword is used to specify the conditions under which a workflow is started.
 
-Below, the event trigger type is pull request and the actions are opened, synchronize, reopened, and closed.
+Below, the event `trigger type` is pull_request and the `activity types` are opened, synchronize, reopened, and closed.
 
 NB synchronized means when a commit is pushed to the branch of the pull request.
 
@@ -13,3 +13,23 @@ on:
     types: [opened, synchronize, reopened, closed]
 ```
 
+# Event trigger types
+
+A comprehensive list of event triggers and activity types can be found [here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows).
+
+The key types are:
+
+- push 
+- pull_request
+- pull_request_review
+- workflow_dispatch
+- issues
+
+Workflows can also be run __on a schedule__ or manually via workflow dispatch using the `schedule` trigger type.
+
+```yaml
+# Run every 5 minutes
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+```

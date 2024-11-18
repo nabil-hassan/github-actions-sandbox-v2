@@ -22,6 +22,10 @@ Reverting PRs in case of failure.
 
 # Getting started
 
+The key parts of getting started are understanding some basic concepts of YAML syntax and the building blocks of GitHub Actions.
+
+We also need to understand how jobs and steps run and how they are or are not dependent on each other.
+
 - [A note on codespaces and ASDF](./1-getting-started/getting-started.md#a-note-on-codespaces-and-asdf)
 - [YAML crash course](./1-getting-started/getting-started.md#yaml-crash-starter)
 - [Writing multi-line statements](./1-getting-started/getting-started.md#writing-multi-line-statements)
@@ -32,8 +36,8 @@ Reverting PRs in case of failure.
 
 Event triggers specify the conditions under which a workflow is started and optionally which branches it should be run against.
 
-By default event triggers run for any branch which matches the trigger conditions.
+By default event triggers run for any branch which match the trigger conditions.
 
-Workflows can also be started manually using 
+Workflows can also be started manually using `workflow dispatch` or run on a CRON schedule.
 
 
