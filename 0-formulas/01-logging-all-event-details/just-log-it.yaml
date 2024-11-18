@@ -1,0 +1,11 @@
+jobs:
+  just-log-it:
+    name: Just log it
+    runs-on: ["ubuntu-latest"]
+    if: "!contains( github.event.pull_request.labels.*.name, 'skip-checks')"
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"

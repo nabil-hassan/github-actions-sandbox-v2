@@ -40,4 +40,7 @@ By default event triggers run for any branch which match the trigger conditions.
 
 Workflows can also be started manually using `workflow dispatch` or run on a CRON schedule using `schedule`.
 
+- [The main event trigger types](./2-event-triggers/event-triggers.md#event-trigger-types)
+- [Accessing the event trigger details](./2-event-triggers/event-triggers.md#accessing-the-workflow-event-trigger-details)
 
+# Workflow Runners

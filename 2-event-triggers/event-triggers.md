@@ -35,3 +35,19 @@ on:
   schedule:
     - cron: "*/15 * * * *"
 ```
+
+# Accessing the workflow event trigger details
+
+The `github` context object is used to access the event details.
+
+- To access the event `trigger type` e.g. pull_request, push etc:
+
+```
+run: echo "The event was ${{ github.event_name }}"
+``` 
+
+- To access the event `activity type` e.g. approved, rejected etc:
+
+```
+run: echo "event type is:" ${{ github.event.action }} 
+```
