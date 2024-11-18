@@ -13,6 +13,7 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 <!-- TOC -->
 * [Cool things](#cool-things)
 * [Getting started](#getting-started)
+* [Event Triggers](#event-triggers)
 <!-- TOC -->
 
 # Cool things
@@ -27,6 +28,12 @@ Reverting PRs in case of failure.
 - [Building blocks](./1-getting-started/getting-started.md#building-blocks)
 - [Job Parallelism and execution separation](./1-getting-started/getting-started.md#parallelism-and-execution-environment)
 
+# Event Triggers
 
+Event triggers specify the conditions under which a workflow is started and optionally which branches it should be run against.
+
+By default event triggers run for any branch which matches the trigger conditions.
+
+Workflows can also be started manually using 
 
 
