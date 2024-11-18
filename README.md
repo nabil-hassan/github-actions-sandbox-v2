@@ -20,9 +20,11 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 
 # Things to remember
 
+Use build caching to avoid constantly re-installing dependencies via Gradle and NPM.
+
 Reverting PRs in case of failure.
 
-Using the `working directory` directive to avoid unnecessary cd commands.
+Using the `working directory` directive to avoid unnecessary cd commands - can be set against individual steps or the entire job (see below).
 
 Using `defaults` to specify default values for jobs including working directory etc ([details](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#defaults))
 
@@ -76,5 +78,7 @@ Instead of using `run` when specifying a step, we instead you `uses`.
 The third party actions can accept option inputs via the `with` keyword.
 
 - [Using the GitHub marketplace to find and inspect actions](./4-third-party-actions/third-party-actions.md#github-marketplace)
+- [Using dependency caching to speed up workflows](./4-third-party-actions/third-party-actions.md#dependency-caching)
 - [Workflow example to setup a React application](./.github/workflows/04-third-party-actions.yaml)
+
 

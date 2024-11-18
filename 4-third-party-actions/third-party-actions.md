@@ -45,3 +45,17 @@ https://github.com/marketplace?verification=verified_creator&type=actions
 - Within this repository, the `action.yml` file contains the metadata for the action.
 
 <img src="../img/action-yaml.png" width="700">
+
+# Dependency caching
+
+Use build caching to avoid constantly re-installing dependencies via Gradle and NPM.
+
+This is typically available when using third party actions for Node and Gradle etc.
+
+```yaml
+  - name: Setup Node
+    uses: actions/setup-node@v4
+    with:
+      node-version: 20
+      cache: 'npm'
+```
