@@ -18,5 +18,5 @@ jobs:
     name: Run on MacOS
     runs-on: windows-latest
     steps:
-      - name: Echo Mac OS
+      - name: Echo Windows
         run: echo "This job is running on Windows" # windows runners don't use the same syntax for variables etc

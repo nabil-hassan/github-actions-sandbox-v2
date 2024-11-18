@@ -14,6 +14,7 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 * [Cool things](#cool-things)
 * [Getting started](#getting-started)
 * [Event Triggers](#event-triggers)
+* [Workflow Runners](#workflow-runners)
 <!-- TOC -->
 
 # Cool things
@@ -31,6 +32,7 @@ We also need to understand how jobs and steps run and how they are or are not de
 - [Writing multi-line statements](./1-getting-started/getting-started.md#writing-multi-line-statements)
 - [Building blocks](./1-getting-started/getting-started.md#building-blocks)
 - [Job Parallelism and execution separation](./1-getting-started/getting-started.md#parallelism-and-execution-environment)
+- [Example workflow](./.github/workflows/01-building-blocks.yaml)
 
 # Event Triggers
 
@@ -42,5 +44,17 @@ Workflows can also be started manually using `workflow dispatch` or run on a CRO
 
 - [The main event trigger types](./2-event-triggers/event-triggers.md#event-trigger-types)
 - [Accessing the event trigger details](./2-event-triggers/event-triggers.md#accessing-the-workflow-event-trigger-details)
+- [Example workflow](./.github/workflows/02-workflow-events.yaml)
 
 # Workflow Runners
+
+Workflow runners are virtual servers used to execute the jobs that comprise our workflows.
+
+You can either use the default GitHub hosted runners or __self-hosted__ runners.
+
+GitHub provides Windows, Ubuntu and Mac runners.
+
+- [Notes on jobs and runner relationship](./3-workflow-runners/workflow-runners.md#notes-on-jobs-and-runners)
+- [Comparison of runner types](./3-workflow-runners/workflow-runners.md#comparison-of-runner-types)
+- [A note on security regarding self-hosted runners](./3-workflow-runners/workflow-runners.md#a-note-on-security-regarding-self-hosted-runners)
+- [Example workflow](./.github/workflows/03-workflow-runners.yaml)
