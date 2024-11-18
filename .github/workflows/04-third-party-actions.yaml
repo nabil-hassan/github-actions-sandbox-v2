@@ -1,4 +1,9 @@
-name: Building React App
+#==============================================================================
+# This workflow uses a third-party actions to build a React App.
+#
+# Notice we use the `working-directry` command to avoid unecessary CDing.
+#==============================================================================
+name: Third party actions
 on:
   workflow_dispatch:
 
@@ -10,6 +15,6 @@ jobs:
         working-directory: ./4-third-party-actions
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Inspect app
         run: ls -lt react-app
