@@ -50,11 +50,16 @@ Workflows can also be started manually using `workflow dispatch` or run on a CRO
 
 Workflow runners are virtual servers used to execute the jobs that comprise our workflows.
 
-You can either use the default GitHub hosted runners or __self-hosted__ runners.
+You can use the `runs-on` keyword to specify the runner for a job. 
+
+You either use the default GitHub hosted runners or __self-hosted__ runners.
 
 GitHub provides Windows, Ubuntu and Mac runners.
 
 - [Notes on jobs and runner relationship](./3-workflow-runners/workflow-runners.md#notes-on-jobs-and-runners)
 - [Comparison of runner types](./3-workflow-runners/workflow-runners.md#comparison-of-runner-types)
 - [A note on security regarding self-hosted runners](./3-workflow-runners/workflow-runners.md#a-note-on-security-regarding-self-hosted-runners)
+- [What's available in my runner?](./3-workflow-runners/workflow-runners.md#whats-available-in-my-runner)
 - [Example workflow](./.github/workflows/03-workflow-runners.yaml)
+
+# Third Party Actions
