@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  inspect-directory:
+  build-and-test:
     runs-on: ubuntu-latest
     defaults:
       run:
