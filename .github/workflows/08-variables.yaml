@@ -13,7 +13,7 @@ jobs:
           echo "Environment variable: ${{ env.MY_ENV_VAR }}"
       - name: Print environment variable using implicit form
         run: | 
-          echo "Environment variable: ${{ MY_ENV_VAR }}"
+          echo "Environment variable: $MY_ENV_VAR"
 
   print-repo-var:
     runs-on: ubuntu-latest
@@ -23,4 +23,4 @@ jobs:
           echo "Repository variable: ${{ vars.MY_REPO_VAR }}"
       - name: Print repository variable using implicit form
         run: | 
-          echo "Repository variable: ${{ MY_REPO_VAR }}"
+          echo "Repository variable: $MY_REPO_VAR"
