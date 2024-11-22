@@ -1,0 +1,22 @@
+name: Contexts
+on:
+  workflow_dispatch:
+jobs:
+  workflow-run-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display workflow run context information
+        run: | 
+          echo "Event name: ${{ github.event_name }}"
+          echo "Branch reference:" ${{ github.head.ref }}
+          echo "SHA:" ${{ github.sha }}
+          echo "Actor:" ${{ github.actor }}
+          echo "Workflow:" ${{ github.workflow }}
+          echo "Run ID:" ${{ github.run_id }}
+          echo "Run number:" ${{ github.run_number }}
+  repository-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display repository context information
+        run: | 
+          echo "Repository variable: ${{ vars.REPOSITORY_VAR }}"
