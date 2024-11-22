@@ -1,0 +1,15 @@
+name: Working with variables
+on:
+  workflow_dispatch:
+env:
+  my_env_var: "workflow"
+jobs:
+  print-env-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment variable using context form
+        run: | 
+          echo "Environment variable: ${{ env.my_env_var }}"
+      - name: Print environment variable using implicit form
+        run: | 
+          echo "Environment variable: ${{ my_env_var }}"
