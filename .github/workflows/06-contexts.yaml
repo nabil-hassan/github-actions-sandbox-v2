@@ -17,7 +17,8 @@ jobs:
       - name: Display workflow run context information
         run: | 
           echo "Event name: ${{ github.event_name }}"
-          echo "Branch reference:" ${{ github.ref }}
+          echo "Full branch reference:" ${{ github.ref }}
+          echo "Short branch reference:" ${{ github.ref_name }}
           echo "SHA:" ${{ github.sha }}
           echo "Actor:" ${{ github.actor }}
           echo "Workflow:" ${{ github.workflow }}

@@ -64,6 +64,14 @@ on:
   workflow_dispatch:
 ```
 
+- Conditional steps and jobs can be implemented using the `if` directive.
+
+```yaml
+- name: Run only on PRs
+  run: echo "This will only run on PRs"
+  if: github.event_name == 'pull_request'
+```
+
 # Getting started
 
 The key parts of getting started are understanding some basic concepts of YAML syntax and the building blocks of GitHub Actions.
@@ -136,3 +144,6 @@ Contexts are used to access information during a workflow run and include secret
 - [Environment variables](./6-contexts/contexts.md#environment-variables)
 - [Workflow inputs](./6-contexts/contexts.md#workflow-inputs)
 - [A worked example](./.github/workflows/06-contexts.yaml)
+
+# Expressions
+

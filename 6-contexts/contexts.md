@@ -41,6 +41,29 @@ Environment variables can be defined at the __workflow, job or step level__ usin
 You can override existing variables - the order of precedence is: step > job > workflow.
 
 ```yaml
-
+name: Contexts
+run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
+on:
+  workflow_dispatch:
+env:
+  MY_WORKFLOW_VAR: "workflow"
+  MY_OVERWRITTEN_VAR: "workflow"
+jobs:
+  environment-context:
+    runs-on: ubuntu-latest
+    env:
+      MY_JOB_VAR: "job"
+      MY_OVERWRITTEN_VAR: "overwrite"    # OVERRIDE AT JOB LEVEL
+    steps:
+      - name: Display environment context information
+        run: |
+          echo "Workflow environment variable: ${{ env.MY_WORKFLOW_VAR }}"
+          echo "Job environment variable: ${{ env.MY_JOB_VAR }}"
+          echo "Overwritten environment variable: ${{ env.MY_OVERWRITTEN_VAR }}"
+      - name: Override variable at step level
+        env:
+          MY_OVERWRITTEN_VAR: "step"      # OVERRIDE AT STEP LEVEL
+        run: |
+          echo "Overwritten environment variable: ${{ env.MY_OVERWRITTEN_VAR }}"
 ```
 

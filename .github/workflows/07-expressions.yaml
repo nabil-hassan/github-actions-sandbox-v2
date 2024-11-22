@@ -1,0 +1,24 @@
+name: Expressions
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Debug mode'
+        required: false
+        default: 'false'
+jobs:
+  run-work:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print startup data
+        if: ${{ github.event.inputs.debug == 'true' }}
+        run: |
+          echo "Triggered by: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "Runner OS:" ${{ runner.os }}
+      - name: Print if main
+        if: ${{github.ref == 'refs/heads/main' && github.event.inputs.debug == 'true'}}
+        run: echo "This is the main branch and we are in debug mode."
+      - name: Print always
+        run: echo "This always runs."
