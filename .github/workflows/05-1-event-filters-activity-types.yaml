@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Inform user
-        run: echo "This job ran when the activity type was:" ${{ github.event_name }} and the branch was ${{ github.ref }}
+        run: echo "This job ran when the activity type was:" ${{ github.event_name }} and the branch was ${{ GITHUB_HEAD_REF }}
