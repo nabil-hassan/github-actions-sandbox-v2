@@ -117,3 +117,10 @@ We can then add a `branches` event filter to specify a GLOB pattern which restri
 
 - [The full documentation](./5-event-filters-activity-types/event-filters-activity-types.md)
 - [A workflow to illustrate](./.github/workflows/05-1-event-filters-activity-types.yaml)
+
+# Contexts
+
+Contexts are used to access information during a workflow run and include secrets, environment variables, workflow/action inputs and details of the triggering event.
+
+- [The full documentation](./6-contexts/contexts.md)
+- [A worked example](./.github/workflows/06-contexts.yaml)
