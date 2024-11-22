@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Print repository variable using context form
         run: | 
-          echo "Repository variable: ${{ vars.MY_REPO_VAR }}"
+          echo "Repository variable: ${{ vars.REPOSITORY_VAR }}"
       - name: Print repository variable using implicit form
         run: | 
-          echo "Repository variable: $MY_REPO_VAR"
+          echo "Repository variable: REPOSITORY_VAR"

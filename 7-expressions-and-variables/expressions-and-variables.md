@@ -33,10 +33,30 @@ on:
 
 # Variables
 
-## Default variable values
+Variables can be broken into the following kinds:
 
-Default values can be set for variables using the `||` operator.
+- Repository variables
+- Organisation variables
+- Environment variables - defined at the workflow, job or step level (they override from least to most precedence)
+
+You can access them using two forms:
+
+- First is the fully qualified context form:
 
 ```yaml
+steps:
+    - name: Accessing a repository variable
+      run: echo ${{ vars.my_repo_variable }}
+    - name: Accessing an environment variable
+      run: echo ${{ env.MY_ENV_VARIABLE }}
+```
 
+- Second is simply by name:
+
+```yaml
+steps:
+    - name: Accessing a repository variable
+      run: echo ${{ my_repo_variable }}
+    - name: Accessing an environment variable
+      run: echo ${{ MY_ENV_VARIABLE }}
 ```
