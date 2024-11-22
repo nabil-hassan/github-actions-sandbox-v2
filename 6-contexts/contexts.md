@@ -12,4 +12,6 @@ Contexts allow you to access information during a workflow and can be broken dow
 
 A full listing of contexts can be found [here](https://docs.github.com/en/enterprise-cloud@latest/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs).
 
+See the worked example: [over here](../.github/workflows/06-contexts.yaml)
+
 NB not all contexts are available at every stage of a workflow - see the documents above for details on exactly where and when you can access them.
