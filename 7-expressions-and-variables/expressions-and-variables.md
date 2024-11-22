@@ -17,3 +17,13 @@ Ternary operators have two forms:
 - `${{expression && value_if_true || value_if_false}}`
 
 Here is an example which is based on a boolean workflow input variable.
+
+# Variables
+
+## Default variable values
+
+Default values can be set for variables using the `||` operator.
+
+```yaml
+
+```
