@@ -21,13 +21,38 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 
 # Things to remember
 
-Use build caching to avoid constantly re-installing dependencies via Gradle and NPM.
+- Use build caching to avoid constantly re-installing dependencies via Gradle and NPM.
 
-Reverting PRs in case of failure.
+```yaml
+- name: Setup Node
+  uses: actions/setup-node@v4
+  with:
+      node-version: 20
+      cache: 'npm'
+```
 
-Using the `working directory` directive to avoid unnecessary cd commands - can be set against individual steps or the entire job (see below).
+- Reverting PRs in case of failure.
 
-Using `defaults` to specify default values for jobs including working directory etc ([details](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#defaults))
+- Using the `working directory` directive to avoid unnecessary cd commands - can be set against individual steps or the entire job (see below).
+
+```yaml
+steps:
+  - name: Execute command
+    working-directory: ./my-directory
+    run: echo "The command"
+```
+
+- If you need all `run` commands in your steps to use the same working directory, use `defaults` 
+- NB this doesn't affect `uses` commands which are run from the root
+
+```yaml
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./4-third-party-actions/react-app
+```
 
 # Getting started
 
@@ -83,3 +108,12 @@ The third party actions can accept option inputs via the `with` keyword.
 - [Workflow example to setup a React application](./.github/workflows/04-third-party-actions.yaml)
 
 # Event Filters & Activity Types
+
+Event filters and activity types are used to control exactly when a workflow should run.
+
+For instance, for the `pull_request` trigger type, we can use the `opened` activity type to run when a PR is opened.
+
+We can then add a `branches` event filter to specify a GLOB pattern which restricts the branches the job will run against.
+
+- [The full documentation](./5-event-filters-activity-types/event-filters-activity-types.md)
+- [A workflow to illustrate](./.github/workflows/05-1-event-filters-activity-types.yaml)
