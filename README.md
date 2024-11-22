@@ -17,6 +17,7 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 * [Workflow Runners](#workflow-runners)
 * [Third Party Actions](#third-party-actions)
 * [Event Filters & Activity Types](#event-filters--activity-types)
+* [Contexts](#contexts)
 <!-- TOC -->
 
 # Things to remember
@@ -52,6 +53,15 @@ jobs:
     defaults:
       run:
         working-directory: ./4-third-party-actions/react-app
+```
+
+- Using the `run-name` directive to title your run - you can include variables to make it dynamic.
+
+```yaml
+name: Contexts
+run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
+on:
+  workflow_dispatch:
 ```
 
 # Getting started
@@ -123,4 +133,6 @@ We can then add a `branches` event filter to specify a GLOB pattern which restri
 Contexts are used to access information during a workflow run and include secrets, environment variables, workflow/action inputs and details of the triggering event.
 
 - [The full documentation](./6-contexts/contexts.md)
+- [Environment variables](./6-contexts/contexts.md#environment-variables)
+- [Workflow inputs](./6-contexts/contexts.md#workflow-inputs)
 - [A worked example](./.github/workflows/06-contexts.yaml)
