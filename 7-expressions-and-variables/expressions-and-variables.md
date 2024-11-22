@@ -9,3 +9,11 @@ Expressions are comprised of one or more of the following:
 
 Expressions are always enclosed in `${{ }}` and can be used in a variety of places in a workflow file.
 
+## Ternary operators
+
+Ternary operators have two forms:
+
+- `${{expression || default_value}}`
+- `${{expression && value_if_true || value_if_false}}`
+
+Here is an example which is based on a boolean workflow input variable.

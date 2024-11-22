@@ -1,4 +1,5 @@
 name: Expressions
+run-name: Using expressions | ${{ inputs.debug && 'ON' || 'OFF' }}
 on:
   workflow_dispatch:
     inputs:

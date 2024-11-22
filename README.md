@@ -147,3 +147,6 @@ Contexts are used to access information during a workflow run and include secret
 
 # Expressions
 
+Expressions are comprised of literal or variable values, operators and functions.
+
+- [Ternary operators are very useful](./7-expressions-and-variables/expressions-and-variables.md#ternary-operators)
