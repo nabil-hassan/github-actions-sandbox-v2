@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [ opened, synchronize ]
     branches:
-      - "FEAT-**"
+      - main
 jobs:
   inform-user:
     name: Inform user

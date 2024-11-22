@@ -4,14 +4,14 @@ Event filters and activity types are used in conjunction with `trigger types` to
 
 For instance below our trigger type is `pull_request`, we add an event filter based on the `branch` and an activity type of `opened`.
 
-This effectively ttranslates to: "run when a pull request is opened on a branch beginning with `FEAT-*`.
+This effectively ttranslates to: "run when a pull request is opened with a target of main.
 
 ```yaml
 name: Pull Requests
 on: 
   pull_request:
     branches:
-      - 'FEAT-*'
+      - main
     types: [opened]
 ```
 
