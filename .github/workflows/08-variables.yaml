@@ -2,14 +2,25 @@ name: Working with variables
 on:
   workflow_dispatch:
 env:
-  my_env_var: "workflow"
+  MY_ENV_VAR: "workflow"
 jobs:
+
   print-env-var:
     runs-on: ubuntu-latest
     steps:
       - name: Print environment variable using context form
         run: | 
-          echo "Environment variable: ${{ env.my_env_var }}"
+          echo "Environment variable: ${{ env.MY_ENV_VAR }}"
       - name: Print environment variable using implicit form
         run: | 
-          echo "Environment variable: ${{ my_env_var }}"
+          echo "Environment variable: ${{ MY_ENV_VAR }}"
+
+  print-repo-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print repository variable using context form
+        run: | 
+          echo "Repository variable: ${{ vars.MY_REPO_VAR }}"
+      - name: Print repository variable using implicit form
+        run: | 
+          echo "Repository variable: ${{ MY_REPO_VAR }}"
