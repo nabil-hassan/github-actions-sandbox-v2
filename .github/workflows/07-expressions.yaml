@@ -7,9 +7,15 @@ on:
         description: 'Debug mode'
         required: false
         default: 'false'
+      production:
+        type: boolean
+        description: 'Production?'
+        default: false
 jobs:
   run-work:
     runs-on: ubuntu-latest
+    env:
+        DEPLOY_ENVIRONMENT: ${{ inputs.production && 'production' || 'non-production' }}
     steps:
       - name: Print startup data
         if: ${{ github.event.inputs.debug == 'true' }}
@@ -21,5 +27,5 @@ jobs:
       - name: Print if main
         if: ${{github.ref == 'refs/heads/main' && github.event.inputs.debug == 'true'}}
         run: echo "This is the main branch and we are in debug mode."
-      - name: Print always
-        run: echo "This always runs."
+      - name: Print deploy environment
+        run: echo "The deployment environment is:" ${{ env.DEPLOY_ENVIRONMENT }}
