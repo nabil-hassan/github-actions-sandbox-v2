@@ -11,12 +11,25 @@ Expressions are always enclosed in `${{ }}` and can be used in a variety of plac
 
 ## Ternary operators
 
-Ternary operators have two forms:
+Ternary operators have two forms where `expression` is either a boolean-type variable or a condition that evaluates to a boolean:   :
 
 - `${{expression || default_value}}`
 - `${{expression && value_if_true || value_if_false}}`
 
 Here is an example which is based on a boolean workflow input variable.
+
+```yaml
+name: Expressions
+run-name: Using expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Debug mode'
+        required: false
+        type: boolean
+        default: false
+```
 
 # Variables
 
