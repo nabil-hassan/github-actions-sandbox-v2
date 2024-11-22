@@ -6,7 +6,8 @@ on:
       debug:
         description: 'Debug mode'
         required: false
-        default: 'false'
+        type: boolean
+        default: false
       production:
         type: boolean
         description: 'Production?'
