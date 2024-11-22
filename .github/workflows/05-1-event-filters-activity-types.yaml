@@ -1,0 +1,13 @@
+name: Event filters & activity types
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+    branches:
+      - main
+jobs:
+  inform-user:
+    name: Inform user
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inform user
+        run: echo "This job ran when the activity type was:" ${{ github.event_name }}
