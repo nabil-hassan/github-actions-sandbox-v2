@@ -1,0 +1,25 @@
+name: Functions examples
+on:
+    workflow_dispatch:
+jobs:
+  do-work:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail
+        run: exit 1
+
+      - name: skipped step
+        if: success()
+        run: echo "This step will only run if the previous steps succeeded"
+
+      - name: only if failed step
+        if: failure()
+        run: echo "This step will only run if one of the previous steps failed"
+
+      - name: only if not cancelled
+        if: cancelled() != true
+        run: echo "This step will only run if the workflow was not cancelled"
+
+      - name: only if cancelled
+        if: cancelled() == true
+        run: echo "This step will only run if the workflow was cancelled"

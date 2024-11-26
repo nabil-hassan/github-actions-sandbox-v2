@@ -20,6 +20,7 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 * [Contexts](#contexts)
 * [Expressions and variables](#expressions-and-variables)
 * [Deployment environments](#deployment-environments)
+* [Functions](#functions)
 <!-- TOC -->
 
 # Things to remember
@@ -170,3 +171,9 @@ Each workflow job can define which environment to use via the `environment` keyw
 
 # Functions
 
+GitHub has two types of functions : general purpose and status check functions (used to check the state of a step/workflow etc).
+
+- [Type conversion functions](./8-functions/functions.md#type-conversions)
+- [Hashing functions can be used on a file or set of files](./8-functions/functions.md#hashing)
+- [Object filters](./8-functions/functions.md#object-filters)
+- [An example workflow](./.github/workflows/08-functions.yaml)
