@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       pass-unit-tests:
-        description: Should the "unit tests" job will pass or fail
+        description: Should the "unit tests" job pass # set this to false to cause the unit test job to fail
         required: true
         default: false
 jobs:
@@ -24,3 +24,10 @@ jobs:
             echo "Unit tests failed"
             exit 1
           fi
+
+  deploy-nonprod:
+    runs-on: ubuntu-latest
+    needs: [lint-build, unit-tests]
+    steps:
+      - name: Deploy to non-prod
+        run: echo "Deploying to non-prod"

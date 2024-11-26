@@ -33,6 +33,8 @@ jobs:
 
 2. GitHub will run a workflow's jobs in parallel __unless__ we use the `needs` directive to specify dependencies between jobs.
 
+- See the excerpt from the [example workflow](../.github/workflows/09-control-flow.yaml) below:
+
 ```yaml
 jobs:
 job1:
