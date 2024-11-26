@@ -1,4 +1,4 @@
-# Control flow
+# Control Flow
 
 Two important rules related to flow of execution:
 
@@ -36,18 +36,15 @@ jobs:
 - See the excerpt from the [example workflow](../.github/workflows/09-control-flow.yaml) below:
 
 ```yaml
-jobs:
-job1:
+  deploy-nonprod:
     runs-on: ubuntu-latest
+    needs: [lint-build, unit-tests]
     steps:
-    - name: step 1
-      run: echo "This is step 1"
-
-job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-    - name: step 2
-      run: echo "This is step 2"
+      - name: Deploy to non-prod
+        run: echo "Deploying to non-prod"
 ```
 
+- This will build a dependency graph similar to the one below - both lint and unit test can run in parallel, but deploy nonprod must wait for both to complete etc.
+- Unit tests has been marked as `continue-on-error` so that the deploy job can still run even if the tests fail (like you can see below).
+
+<img src="../img/deployment-job-needs.png" width="700">

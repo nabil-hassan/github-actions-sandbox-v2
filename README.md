@@ -162,11 +162,13 @@ Variables can be repository, organisation or environment based and include secre
 
 # Deployment environments
 
-Deployment environments can be used to define different variable values and gate the deployment to higher environments using `deployment approvals`.
+Deployment environments can be used to define different variable and secret values and gate the deployment to higher environments using `deployment approvals`.
 
 Each workflow job can define which environment to use via the `environment` keyword.
 
-- [Deployment environment variables](./7-expressions-and-variables/expressions-and-variables.md#deployment-environment-variables-and-secrets)
+NB deployment environments are not available in unpaid private repos, so I had to create a [public repo](https://github.com/nabil-hassan/github-actions-sandbox-public) to experiment with them.
+
+- [Deployment environment notes](./11-deployment-environments/deployment-environments.md)
 
 # Functions
 
@@ -180,12 +182,14 @@ GitHub has two types of functions : general purpose and status check functions (
 
 # Control flow
 
-By default, if a step or job fails, GitHub actions will not run subsequent steps, unless you either:
+Two IMPORTANT things to understand:
+
+1. By default, if a step or job fails, GitHub actions will not run subsequent steps, unless you either:
 
 - include an `if` condition on the step in conjunction with a status check function.
 - use `continue-on-error` to run subsequent jobs even if the current one fails.
 
-Furthermore, GitHub will run a workflow's jobs in parallel __unless__ we use the `needs` directive to specify dependencies between jobs.
+2. Furthermore, GitHub will run a workflow's jobs in parallel __unless__ we use the `needs` directive to specify dependencies between jobs.
 
 - [Control flow notes](./9-control-execution-flow/control-flow.md)
 - [Example workflow](./.github/workflows/09-control-flow.yaml)

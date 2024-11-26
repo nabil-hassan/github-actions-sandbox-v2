@@ -9,7 +9,19 @@ GitHub broadly offers two types of functions:
 
 NB the default behaviour of GitHub is to not execute a step if the previous step failed. 
 
-You can override this by placing an `if` condition on your job or step and using one of the following: 
+You can work around this using `continue-on-error: true` in your job or step definition.
+
+```yaml
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: step 1
+      run: exit 1
+    continue-on-error: true
+```
+
+You can also override this by placing an `if` condition on your job or step and using one of the following: 
 
 - using the `always()` function - meaning it will run even if the previous step failed or was cancelled.
 - using `!cancelled()` - meaning it will run if the previous step was not cancelled.

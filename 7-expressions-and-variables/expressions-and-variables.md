@@ -67,15 +67,13 @@ steps:
 
 ## Deployment environment variables and secrets
 
-NB environments are only available for public repos OR if you are a paid customer.
+See also: [the deployment environment section](../11-deployment-environments/deployment-environments.md)
 
-Repository variables can also be broken into deployment environment variables and secrets. 
+Repository variables can also be broken into deployment environment variables and secrets.
 
 For instance, we may have different AWS credentials for our development, staging and production environments.
 
 Using GitHub's support for different deployment environments the value of a variable will change depending on which environment it is running in.
-
-Refer to the [example workflow](../.github/workflows/08-variables-deployment-environments.yaml) for an example.
 
 Here are the steps required to implement:
 
