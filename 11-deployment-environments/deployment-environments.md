@@ -37,36 +37,45 @@ jobs:
 
 <img src="../img/environment-protection.png" width="700">
 
-## Deployment environment variables and secrets
+# Deployment environment example workflow
 
-Repository variables can also be broken into deployment environment variables and secrets.
-
-For instance, we may have different AWS credentials for our development, staging and production environments.
-
-Using GitHub's support for different deployment environments the value of a variable will change depending on which environment it is running in.
-
-Here are the steps required to implement:
-
-- In the GitHub UI create three environments: PRODUCTION, STAGING, TEST:
-
-- Add a variable to each environment with the same name but different values:
-
-- Define the environment for each job and echo the variable:
-
+- Create 3 environments: dev, staging, production
+- Add a variable to each of them called `MY_ENV_VAR`
+- For production add the requirement for a deployment review.
+- Run the action below via the UI and inspect the output
+- You can pick which lower environment is used when you run the job using a workflow input
 
 ```yaml
+# Used to illustrate deployment environments
+name: Deployment environments workflow
+run-name: Deploy to ${{ inputs.environment }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Lower environment to deploy to'
+        type: 'choice'
+        required: true
+        default: 'staging'
+        options:
+          - 'staging'
+          - 'dev'
+
 jobs:
-  do-prod:
+  deploy-lower-environment:
     runs-on: ubuntu-latest
-    environment: PRODUCTION
+    environment: ${{ inputs.environment }}
     steps:
-      - name: Deploy to production
-        run: echo "Deploying with var = ${repo_var}"
-        
-  do-test:
+      - name: deploy-lower
+        run: echo "Welcome to the deployment environments workflow. The environment variable is:" ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
+
+  deploy-production:
+    needs: deploy-lower-environment
     runs-on: ubuntu-latest
-    environment: TEST
+    environment: production
     steps:
-    - name: Deploy to production
-      run: echo "Deploying with var = ${repo_var}"
+        - name: deploy-prod
+          run: echo "Welcome to the deployment environments workflow. The environment variable is:" ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
 ```
+

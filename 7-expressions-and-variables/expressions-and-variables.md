@@ -71,32 +71,26 @@ See also: [the deployment environment section](../11-deployment-environments/dep
 
 Repository variables can also be broken into deployment environment variables and secrets.
 
-For instance, we may have different AWS credentials for our development, staging and production environments.
+They will be accessed using the `vars` and `secrets` contexts respectively.
 
-Using GitHub's support for different deployment environments the value of a variable will change depending on which environment it is running in.
+However, be aware the actual values are only available once you have specified the environment for a job.
 
-Here are the steps required to implement:
-
-- In the GitHub UI create three environments: PRODUCTION, STAGING, DEVELOPMENT:
-
-- Add a variable to each environment with the same name but different values:
-
-- Define the environment for each job and echo the variable:
-
+See the comments below:
 
 ```yaml
+# this is not fine as actions has no context of which environment will be used at this point so will not use the environmnet override
+name: Deployment environments workflow
+run-name: Deploy to ${{ github.event.inputs.environment }}
+env:
+  MY_ENV_VAR: ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
+
 jobs:
-  do-prod:
+  # this example is fine as the environment is specified and the override will get picked up
+  deploy-production:
+    needs: deploy-lower-environment
     runs-on: ubuntu-latest
-    environment: PRODUCTION
+    environment: production
     steps:
-      - name: Deploy to production
-        run: echo "Deploying with var = ${repo_var}"
-        
-  do-test:
-    runs-on: ubuntu-latest
-    environment: TEST
-    steps:
-    - name: Deploy to production
-      run: echo "Deploying with var = ${repo_var}"
+        - name: deploy-prod
+          run: echo "Welcome to the deployment environments workflow. The environment variable is:" ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
 ```
