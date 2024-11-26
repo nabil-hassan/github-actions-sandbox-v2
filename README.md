@@ -77,6 +77,12 @@ on:
   if: github.event_name == 'pull_request'
 ```
 
+- Using ternary operators to default or conditionally set values:
+
+```yaml
+MY_ENV_VAR: ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
+```
+
 # Getting started
 
 The key parts of getting started are understanding some basic concepts of YAML syntax and the building blocks of GitHub Actions.
@@ -162,9 +168,23 @@ Variables can be repository, organisation or environment based and include secre
 
 # Deployment environments
 
-Deployment environments can be used to define different variable and secret values and gate the deployment to higher environments using `deployment approvals`.
+The main purposes of deployment environments are:
 
-Each workflow job can define which environment to use via the `environment` keyword.
+- To define different variable and secret values for different environments.
+- To specify required approvers to gate deployments to higher environments.
+- To restrict which branches can be deployed to which environments.
+
+Each workflow job can define which environment to use variables for via the `environment` keyword.
+
+```yaml
+jobs:
+  do-prod:
+    runs-on: ubuntu-latest
+    environment: PRODUCTION
+    steps:
+      - name: Deploy to production
+        run: echo "Deploying with var = ${repo_var}"
+```
 
 NB deployment environments are not available in unpaid private repos, so I had to create a [public repo](https://github.com/nabil-hassan/github-actions-sandbox-public) to experiment with them.
 
