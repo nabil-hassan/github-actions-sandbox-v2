@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       pass-unit-tests:
-        description: Determines whether the "unit tests" job will pass or fail
+        description: Should the "unit tests" job will pass or fail
         required: true
         default: false
 jobs:
