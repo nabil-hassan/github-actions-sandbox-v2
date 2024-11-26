@@ -5,6 +5,9 @@ jobs:
   do-work:
     runs-on: ubuntu-latest
     steps:
+      - name: sleep for 10 seconds # this step gives you some time to cancel the workflow so the last conditional step will run
+        run: sleep 10
+
       - name: fail
         run: exit 1
 

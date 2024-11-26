@@ -173,6 +173,7 @@ Each workflow job can define which environment to use via the `environment` keyw
 
 GitHub has two types of functions : general purpose and status check functions (used to check the state of a step/workflow etc).
 
+- [Status check functions](./8-functions/functions.md#status-check-functions)
 - [Type conversion functions](./8-functions/functions.md#type-conversions)
 - [Hashing functions can be used on a file or set of files](./8-functions/functions.md#hashing)
 - [Object filters](./8-functions/functions.md#object-filters)

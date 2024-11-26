@@ -16,7 +16,21 @@ You can override this by placing an `if` condition on your job or step and using
 
 You can also use the success() and failure() functions within if expressions.
 
-Here is a worked example.
+Here is a excerpt from the [worked example](../.github/workflows/08-functions.yaml) in this repository.
+
+```yaml
+    steps:
+      - name: fail
+        run: exit 1
+
+      - name: skipped step
+        if: success()
+        run: echo "This step will only run if the previous steps succeeded"
+
+      - name: only if failed step
+        if: failure()
+        run: echo "This step will only run if one of the previous steps failed"
+```
 
 ## Hashing
 
