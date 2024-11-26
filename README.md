@@ -18,9 +18,13 @@ NB please see the [Forumlas](./0-formulas) sections for examples of how to addre
 * [Third Party Actions](#third-party-actions)
 * [Event Filters & Activity Types](#event-filters--activity-types)
 * [Contexts](#contexts)
+* [Expressions and variables](#expressions-and-variables)
+* [Deployment environments](#deployment-environments)
 <!-- TOC -->
 
 # Things to remember
+
+- Using deployment environments and deployment approvals to prevent auto-deploy to PROD.
 
 - Use build caching to avoid constantly re-installing dependencies via Gradle and NPM.
 
@@ -145,8 +149,24 @@ Contexts are used to access information during a workflow run and include secret
 - [Workflow inputs](./6-contexts/contexts.md#workflow-inputs)
 - [A worked example](./.github/workflows/06-contexts.yaml)
 
-# Expressions
+# Expressions and variables
 
 Expressions are comprised of literal or variable values, operators and functions.
 
 - [Ternary operators are very useful](./7-expressions-and-variables/expressions-and-variables.md#ternary-operators)
+
+Variables can be repository, organisation or environment based.
+
+- [Using variables](./7-expressions-and-variables/expressions-and-variables.md#variables)
+
+# Deployment environments
+
+Deployment environments can be used to define different variable values and gate the depoyment to higher environments using `deployment approvals`.
+
+Each workflow job can define which environment to use via the `environment` keyword.
+
+- [Deployment environment variables](./7-expressions-and-variables/expressions-and-variables.md#deployment-environment-variables-and-secrets)
+- [Using deployment environment variables and secrets in a workflow](./.github/workflows/08-variables-deployment-environments.yaml)
+
+# Functions
+
