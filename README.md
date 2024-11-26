@@ -6,7 +6,7 @@ A newer version of GitHub actions sandbox.
 
 This readme acts as a guide to the key areas of the repository.
 
-NB please see the [Forumlas](./0-formulas) sections for examples of how to address common requirements.
+NB please see the [Forumlas](./0-formulas) sections for __examples of how to address common requirements__.
 
 <h1>Table of contents</h1>
 
@@ -156,18 +156,17 @@ Expressions are comprised of literal or variable values, operators and functions
 
 - [Ternary operators are very useful](./7-expressions-and-variables/expressions-and-variables.md#ternary-operators)
 
-Variables can be repository, organisation or environment based.
+Variables can be repository, organisation or environment based and include secrets.
 
 - [Using variables](./7-expressions-and-variables/expressions-and-variables.md#variables)
 
 # Deployment environments
 
-Deployment environments can be used to define different variable values and gate the depoyment to higher environments using `deployment approvals`.
+Deployment environments can be used to define different variable values and gate the deployment to higher environments using `deployment approvals`.
 
 Each workflow job can define which environment to use via the `environment` keyword.
 
 - [Deployment environment variables](./7-expressions-and-variables/expressions-and-variables.md#deployment-environment-variables-and-secrets)
-- [Using deployment environment variables and secrets in a workflow](./.github/workflows/08-variables-deployment-environments.yaml)
 
 # Functions
 
@@ -178,3 +177,16 @@ GitHub has two types of functions : general purpose and status check functions (
 - [Hashing functions can be used on a file or set of files](./8-functions/functions.md#hashing)
 - [Object filters](./8-functions/functions.md#object-filters)
 - [An example workflow](./.github/workflows/08-functions.yaml)
+
+# Control flow
+
+By default, if a step or job fails, GitHub actions will not run subsequent steps, unless you either:
+
+- include an `if` condition on the step in conjunction with a status check function.
+- use `continue-on-error` to run subsequent jobs even if the current one fails.
+
+Furthermore, GitHub will run a workflow's jobs in parallel __unless__ we use the `needs` directive to specify dependencies between jobs.
+
+- [Control flow notes](./9-control-execution-flow/control-flow.md)
+- [Example workflow](./.github/workflows/09-control-flow.yaml)
+

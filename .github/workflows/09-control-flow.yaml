@@ -1,0 +1,26 @@
+name: Control flow
+on:
+  workflow_dispatch:
+    inputs:
+      pass-unit-tests:
+        description: Determines whether the "unit tests" job will pass or fail
+        required: true
+        default: false
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint code
+        run: echo "Linting code"
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unit tests
+        run: |
+          if ${{ github.event.inputs.pass-unit-tests }}; then
+            echo "Unit tests passed"
+          else
+            echo "Unit tests failed"
+            exit 1
+          fi

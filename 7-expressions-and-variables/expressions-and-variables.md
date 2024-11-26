@@ -35,8 +35,8 @@ on:
 
 Variables can be broken into the following kinds:
 
-- Repository variables
-- Organisation variables
+- Repository variables - either secret or standard
+- Organisation variables - either secret or standard
 - Environment variables - defined at the workflow, job or step level (they override from least to most precedence)
 
 To see how to define and use environment variables, see the [contexts documentation](../6-contexts/contexts.md#environment-variables).
