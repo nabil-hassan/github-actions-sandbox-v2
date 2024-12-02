@@ -45,6 +45,8 @@ jobs:
 - Run the action below via the UI and inspect the output
 - You can pick which lower environment is used when you run the job using a workflow input
 
+NB actually GitHub actions now supports a datatype called `environment` which can be used instead of choice as is the case below.
+
 ```yaml
 # Used to illustrate deployment environments
 name: Deployment environments workflow
@@ -53,6 +55,7 @@ run-name: Deploy to ${{ inputs.environment }}
 on:
   workflow_dispatch:
     inputs:
+      # NB actually GitHub actions now supports a datatype called `environment` which should be used instead of choice
       environment:
         description: 'Lower environment to deploy to'
         type: 'choice'

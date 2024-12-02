@@ -8,6 +8,8 @@ This readme acts as a guide to the key areas of the repository.
 
 NB please see the [Forumlas](./0-formulas) sections for __examples of how to address common requirements__.
 
+Please also see the [official documentation on syntax](https://docs.github.com/en/enterprise-cloud@latest/actions/writing-workflows/workflow-syntax-for-github-actions#onworkflow_dispatchinputsinput_idtype)
+
 <h1>Table of contents</h1>
 
 <!-- TOC -->
@@ -21,6 +23,8 @@ NB please see the [Forumlas](./0-formulas) sections for __examples of how to add
 * [Expressions and variables](#expressions-and-variables)
 * [Deployment environments](#deployment-environments)
 * [Functions](#functions)
+* [Control flow](#control-flow)
+* [Inputs and outputs](#inputs-and-outputs)
 <!-- TOC -->
 
 # Things to remember
@@ -214,3 +218,13 @@ Two IMPORTANT things to understand:
 - [Control flow notes](./9-control-execution-flow/control-flow.md)
 - [Example workflow](./.github/workflows/09-control-flow.yaml)
 
+# Inputs and outputs
+
+GitHub actions can take inputs and produce outputs.
+
+These are useful for passing data between jobs and steps and building reusable workflows using `custom actions` and `reusable workflows`.
+
+They are made available via the `inputs` and `outputs` [contexts](./6-contexts/contexts.md).
+
+- [Notes on inputs and outputs](./10-inputs-and-outputs/inputs-and-outputs.md)
+- [Example of workflow inputs](./.github/workflows/10-inputs.yaml)
