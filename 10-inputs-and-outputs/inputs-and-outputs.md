@@ -57,7 +57,7 @@ Outputs allow a job to produce some information which can be passed into downstr
 To implement an output we need to:
 
 - Make sure to give the step that will output the data a unique id using the `id` attribute.
-- The step can echo a number of key value pairs to $GITHUB_OUTPUT
+- The step can echo a number of key value pairs to $GITHUB_OUTPUT - here we echo `token` and `domain`
 - Define the key value pairs you are writing in the `outputs` section of the job using the syntax `${{ steps.<step-name>.outputs.<output-name> }}.
 - Specify a dependency between two jobs using the `needs` keyword.
 - Access the output within downstream using `$ {{ needs.<job-name>.outputs.<output-name> }}`.
