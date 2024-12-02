@@ -1,0 +1,20 @@
+name: Working with job outputs
+on:
+  workflow_dispatch:
+
+jobs:
+  produce-output:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.build.outputs.TAG }}
+    steps:
+    - name: build job's output
+      id: build
+      run: echo "TAG=v1" >> $GITHUB_OUTPUT
+
+  consume-output:
+    needs: produce-output
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo previous job's step output
+        run: echo $ {{needs.produce-output.outputs.tag}}

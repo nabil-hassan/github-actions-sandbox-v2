@@ -224,6 +224,8 @@ GitHub actions can take inputs and produce outputs.
 
 These are useful for passing data between jobs and steps and building reusable workflows using `custom actions` and `reusable workflows`.
 
+They are also used for the `workflow dispatch` event trigger type - allowing the user to run the job manually and supply inputs.
+
 They are made available via the `inputs` and `outputs` [contexts](./6-contexts/contexts.md).
 
 - [Notes on inputs and outputs](./10-inputs-and-outputs/inputs-and-outputs.md)
