@@ -6,15 +6,30 @@ jobs:
   produce-output:
     runs-on: ubuntu-latest
     outputs:
-      tag: ${{ steps.build.outputs.TAG }}
+      token: ${{ steps.build.outputs.token }}
+      domain: ${{ steps.build.outputs.domain }}
     steps:
     - name: build job's output
       id: build
-      run: echo "TAG=v1" >> $GITHUB_OUTPUT
+      run: |
+        {
+          "token=7ftwe7vgbhsbvd"
+          "domain=example.com"
+        } >> $GITHUB_OUTPUT
+
+        {
+          echo "### Workflow variables"
+          echo "| Variable   | Value       |"
+          echo "| ---------- | ----------- |"
+          echo "| token  | $token  |"
+          echo "| domain | $domain |"
+        } >> $GITHUB_STEP_SUMMARY
 
   consume-output:
     needs: produce-output
     runs-on: ubuntu-latest
     steps:
-      - name: echo previous job's step output
-        run: echo ${{ needs.produce-output.outputs.tag }}
+      - name: echo previous job's token output
+        run: echo ${{ needs.produce-output.outputs.token }}
+      - name: echo previous job's domain output
+        run: echo ${{ needs.produce-output.outputs.domain }}

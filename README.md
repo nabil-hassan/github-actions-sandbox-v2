@@ -229,4 +229,5 @@ They are also used for the `workflow dispatch` event trigger type - allowing the
 They are made available via the `inputs` and `outputs` [contexts](./6-contexts/contexts.md).
 
 - [Notes on inputs and outputs](./10-inputs-and-outputs/inputs-and-outputs.md)
-- [Example of workflow inputs](./.github/workflows/10-inputs.yaml)
+- [Example of workflow dispatch inputs](./.github/workflows/10-inputs.yaml)
+- [Example of job_outputs](./.github/workflows/10-outputs.yaml)
