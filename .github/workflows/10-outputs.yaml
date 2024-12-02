@@ -12,18 +12,8 @@ jobs:
     - name: build job's output
       id: build
       run: |
-        {
-          "env_token=production"
-          "env_domain=example.com"
-        } >> $GITHUB_OUTPUT
-    
-        {
-          echo "### Workflow variables"
-          echo "| Variable   | Value       |"
-          echo "| ---------- | ----------- |"
-          echo "| env_token  | $env_token  |"
-          echo "| env_domain | $env_domain |"
-        } >> $GITHUB_STEP_SUMMARY
+        echo "env_token=production" >> "$GITHUB_OUTPUT"
+        echo "env_domain=example.com" >> "$GITHUB_OUTPUT"
 
   consume-output:
     needs: produce-output
