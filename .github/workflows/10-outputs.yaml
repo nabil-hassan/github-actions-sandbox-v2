@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo previous job's step output
-        run: echo $ {{needs.produce-output.outputs.tag}}
+        run: echo ${{ needs.produce-output.outputs.tag }}
