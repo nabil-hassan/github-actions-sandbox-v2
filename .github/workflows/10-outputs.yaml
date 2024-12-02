@@ -6,23 +6,23 @@ jobs:
   produce-output:
     runs-on: ubuntu-latest
     outputs:
-      token: ${{ steps.build.outputs.token }}
-      domain: ${{ steps.build.outputs.domain }}
+      token: ${{ steps.build.outputs.env_token }}
+      domain: ${{ steps.build.outputs.env_domain }}
     steps:
     - name: build job's output
       id: build
       run: |
         {
-          "token=7ftwe7vgbhsbvd"
-          "domain=example.com"
+          "env_token=production"
+          "env_domain=example.com"
         } >> $GITHUB_OUTPUT
-
+    
         {
           echo "### Workflow variables"
           echo "| Variable   | Value       |"
           echo "| ---------- | ----------- |"
-          echo "| token  | $token  |"
-          echo "| domain | $domain |"
+          echo "| env_token  | $env_token  |"
+          echo "| env_domain | $env_domain |"
         } >> $GITHUB_STEP_SUMMARY
 
   consume-output:

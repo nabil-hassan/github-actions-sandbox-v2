@@ -61,3 +61,13 @@ To implement an output we need to:
 - Define the key value pairs you are writing in the `outputs` section of the job using the syntax `${{ steps.<step-name>.outputs.<output-name> }}.
 - Specify a dependency between two jobs using the `needs` keyword.
 - Access the output within downstream using `$ {{ needs.<job-name>.outputs.<output-name> }}`.
+
+In this example we also include a step summary table to show the output of the job.
+
+```yaml
+```
+NB if you are just outputting one variable you can use the single-line form of echo:
+
+```yaml
+
+```
