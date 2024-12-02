@@ -62,12 +62,28 @@ To implement an output we need to:
 - Specify a dependency between two jobs using the `needs` keyword.
 - Access the output within downstream using `$ {{ needs.<job-name>.outputs.<output-name> }}`.
 
-In this example we also include a step summary table to show the output of the job.
+NB notice we always use the append operator `>>` to avoid overwriting the outputs when we write multiple outputs.
 
 ```yaml
-```
-NB if you are just outputting one variable you can use the single-line form of echo:
+jobs:
+  produce-output:
+    runs-on: ubuntu-latest
+    outputs:
+      token: ${{ steps.build.outputs.env_token }}
+      domain: ${{ steps.build.outputs.env_domain }}
+    steps:
+    - name: build job's output
+      id: build
+      run: |
+        echo "env_token=production" >> "$GITHUB_OUTPUT"
+        echo "env_domain=example.com" >> "$GITHUB_OUTPUT"
 
-```yaml
-
+  consume-output:
+    needs: produce-output
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo previous job's token output
+        run: echo ${{ needs.produce-output.outputs.token }}
+      - name: echo previous job's domain output
+        run: echo ${{ needs.produce-output.outputs.domain }}
 ```
