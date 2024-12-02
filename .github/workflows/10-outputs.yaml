@@ -1,4 +1,4 @@
-name: Working with job outputs
+name: Job outputs
 on:
   workflow_dispatch:
 
