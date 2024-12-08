@@ -13,8 +13,9 @@ jobs:
         shape: [circle, square]
         size: [small, large]
         include:
+          - opacity: 50
           - color: red
             shape: triangle
     steps:
       - name: List inputs
-        run: echo "Color=${{ matrix.color }}, Shape=${{ matrix.shape }}, Size=${{ matrix.size }}"
+        run: echo "Color=${{ matrix.color }}, Shape=${{ matrix.shape }}, Size=${{ matrix.size }}, Opacity=${{ matrix.opacity }}"
