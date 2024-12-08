@@ -1,4 +1,16 @@
-# Matrixes
+<h1>Matrixes</h1>
+
+<h1>Table of content</h1>
+
+<!-- TOC -->
+* [Overview](#overview)
+* [Fail fast and max parallel](#fail-fast-and-max-parallel)
+* [Includes directive](#includes-directive)
+  * [Rationalising how include works](#rationalising-how-include-works)
+* [Excludes directive](#excludes-directive)
+<!-- TOC -->
+
+# Overview
 
 Matrixes allow us to run several variations of the same job.
 
@@ -39,7 +51,7 @@ strategy:
   matrix:
 ```
 
-# Includes and Excludes directives
+# Includes directive
 
 The placement of properties in the `includes` directive is very important.
 
@@ -89,3 +101,39 @@ strategy:
 - If not matched on shape or color e.g. green square, the opacity will be 50
 
 <img src="../img/matrix-includes-2.png" width="700">
+
+Last but not least, if we move the opacity 50 include to the end of the array, we get totally different behaviour. 
+
+```yaml
+include-example:
+name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }} ${{ matrix.opacity }}"
+runs-on: ubuntu-latest
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    include:
+      - color: red
+        opacity: 75
+      - shape: circle
+        opacity: 100
+      - color: red
+        shape: triangle
+      - opacity: 50
+```
+
+Everything except red triangle uses opacity 50:
+
+<img src="../img/matrix-includes-3.png" width="700">
+
+Let's explain all this behaviour in the next section.
+
+## Rationalising how include works
+
+TODO: complete
+
+# Excludes directive
+
+
+
