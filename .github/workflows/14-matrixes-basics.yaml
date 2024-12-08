@@ -1,11 +1,11 @@
 name: Matrix fundamentals
-run-name: "${{ matrix.os }}-${{ matrix.version }}"
 
 on:
   workflow_dispatch:
 
 jobs:
   backwards-compatability:
+    name: "Check compatability for ${{ matrix.os }} with Node version ${{ matrix.version }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
