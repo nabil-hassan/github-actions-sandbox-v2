@@ -1,4 +1,4 @@
-name: Working with Matrixes
+name: Matrix fundamentals
 run-name: "${{ matrix.os }}-${{ matrix.version }}"
 
 on:
