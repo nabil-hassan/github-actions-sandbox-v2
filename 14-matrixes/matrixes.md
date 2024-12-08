@@ -53,7 +53,10 @@ strategy:
 
 # Includes directive
 
-The `includes` directive can be used to add new permutations to the matrix or include additional properties for certain permutations.
+The `includes` directive can be used to add new permutations to the matrix either by:
+
+- adding new keys that do not exist in the matrix
+- adding new key values that do not exist in the matrix
 
 The placement of properties in the `includes` directive is very important.
 
@@ -153,3 +156,38 @@ strategy:
 
 <img src="../img/matrix-excludes-error.png" width="700">
 
+Here is an example of a valid exclude directive, since both keys exist in the matrix:
+
+```yaml
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    exclude:
+      - color: green
+        shape: circle
+```
+
+NB excludes will not apply to an includes permutation that contains a key value that does not exist.
+
+For example below, there is no `size` value of `medium` so the exclude directive is not applied.
+
+As you can see below, this means that we get a run for the medium green circle.
+
+```yaml
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    include:
+      - color: green
+        shape: circle
+        size: medium
+    exclude:
+      - color: green
+        shape: circle
+```
+
+<img src="../img/matrix-excludes-caveat.png" width="700">
