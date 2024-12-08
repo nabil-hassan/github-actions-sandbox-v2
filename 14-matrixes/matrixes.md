@@ -41,3 +41,25 @@ strategy:
 
 # Includes and Excludes directives
 
+The placement of properties in the `includes` directive is very important.
+
+If you place an additional property at the beginning of the includes array, it will only apply to permutations that appear before it:
+
+```yaml
+include-example:
+    name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }} ${{ matrix.opacity }}"
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    include:
+      - opacity: 50
+      - color: red
+        shape: triangle
+```
+
+As you can see below, opacity was not applied to the red triangle since it appeared before it in the list.
+
+<img src="../img/matrix-includes-1.png" width="700">
+
