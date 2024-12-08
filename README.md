@@ -25,6 +25,7 @@ Please also see the [official documentation on syntax](https://docs.github.com/e
 * [Functions](#functions)
 * [Control flow](#control-flow)
 * [Inputs and outputs](#inputs-and-outputs)
+* [Reusable workflows and matrices](#reusable-workflows-and-matrices-)
 <!-- TOC -->
 
 # Things to remember
@@ -64,7 +65,7 @@ jobs:
         working-directory: ./4-third-party-actions/react-app
 ```
 
-- Using the `run-name` directive to title your run - you can include variables to make it dynamic.
+- Using the `run-name` directive to title your run - you can include variables from the various contexts to make it dynamic.
 
 ```yaml
 name: Contexts
@@ -231,3 +232,19 @@ They are made available via the `inputs` and `outputs` [contexts](./6-contexts/c
 - [Notes on inputs and outputs](./10-inputs-and-outputs/inputs-and-outputs.md)
 - [Example of workflow dispatch inputs](./.github/workflows/10-inputs.yaml)
 - [Example of job_outputs](./.github/workflows/10-outputs.yaml)
+
+# Reusable workflows and matrices 
+
+You can use reusable workflows and matrices to avoid duplication and make your workflows more maintainable.
+
+Reusable workflows can be stored either in your repository or in a public repository.
+
+Matrixes allow you define a `strategy` which will run a job multiple times with different values.
+
+The values that comprise the matrix can be accessed using the `matrix` context.
+
+The number of permutations is the cartesian product of the key value pairs for if you havw 2 pairs, and each has 2 values, there will be 4 job runs.
+
+- [Matrixes notes](./14-matrixes/matrixes.md)
+- [Matrixes basic workflow example](./.github/workflows/14-matrixes-basics.yaml)
+- [Reusable workflow notes](./12-reusable-workflows/reusable-workflows.md)
