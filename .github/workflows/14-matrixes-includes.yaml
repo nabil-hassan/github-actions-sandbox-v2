@@ -5,7 +5,7 @@ on:
 
 jobs:
   include-example:
-    name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }}"
+    name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }} ${{ matrix.opacity }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
