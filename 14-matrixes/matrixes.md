@@ -63,3 +63,29 @@ As you can see below, opacity was not applied to the red triangle since it appea
 
 <img src="../img/matrix-includes-1.png" width="700">
 
+Now, if we tweak this slightly, we can illustrate how includes can target one or more matrix segments:
+
+```yaml
+include-example:
+name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }} ${{ matrix.opacity }}"
+runs-on: ubuntu-latest
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    include:
+      - opacity: 50
+      - color: red
+        opacity: 75
+      - shape: circle
+        opacity: 100
+      - color: red
+        shape: triangle
+```
+
+- If the shape is a circle, the opacity will be 100
+- If the color is red, the opacity will be 75
+- If not matched on shape or color e.g. green square, the opacity will be 50
+
+<img src="../img/matrix-includes-2.png" width="700">
