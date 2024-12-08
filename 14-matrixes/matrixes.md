@@ -53,6 +53,8 @@ strategy:
 
 # Includes directive
 
+The `includes` directive can be used to add new permutations to the matrix or include additional properties for certain permutations.
+
 The placement of properties in the `includes` directive is very important.
 
 If you place an additional property at the beginning of the includes array, it will only apply to permutations that appear before it:
@@ -135,5 +137,19 @@ TODO: complete
 
 # Excludes directive
 
+However, unlike `includes`, excludes must refer to keys within the matrix. 
 
+For instance, below, GitHub will complain because the `opacity` key does not exist within the matrix itself.
+
+```yaml
+strategy:
+  matrix:
+    color: [red, green]
+    shape: [circle, square]
+    size: [small, large]
+    exclude:
+      - opacity: 75
+```
+
+<img src="../img/matrix-excludes-error.png" width="700">
 

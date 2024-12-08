@@ -21,7 +21,8 @@ jobs:
             shape: triangle
           - opacity: 50
         exclude:
-          - opacity: 75
+          - color: green
+            shape: circle
     steps:
       - name: List inputs
         run: echo "Color=${{ matrix.color }}, Shape=${{ matrix.shape }}, Size=${{ matrix.size }}, Opacity=${{ matrix.opacity }}"
