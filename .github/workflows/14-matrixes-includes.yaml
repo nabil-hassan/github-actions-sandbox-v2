@@ -1,0 +1,17 @@
+name: Matrix includes directive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  include-example:
+    name: "${{ matrix.color }} ${{ matrix.shape }} ${{ matrix.size }}"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        color: [red, green]
+        shape: [circle, square]
+        size: [small, large]
+    steps:
+      - name: List inputs
+        run: echo "Color=${{ matrix.color }}, Shape=${{ matrix.shape }}, Size=${{ matrix.size }}"

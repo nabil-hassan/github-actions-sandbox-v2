@@ -25,3 +25,19 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
 ```
+
+# Fail fast and max parallel
+
+The `fail fast` option determines whether the job will fail all sub matrix jobs if one of them fails:
+
+The `max parallel` option determines how many jobs can run in parallel.
+
+```yaml
+strategy:
+  fail-fast: true
+  max-parallel: 2
+  matrix:
+```
+
+# Includes and Excludes directives
+

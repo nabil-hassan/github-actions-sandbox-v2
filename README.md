@@ -88,6 +88,8 @@ on:
 MY_ENV_VAR: ${{ vars.MY_ENV_VAR || 'DEFAULT' }}
 ```
 
+- Use `Matrixes` to repeat a job with different inputs e.g. OS and Node version and `Callable workflows` to reuse job logic
+
 # Getting started
 
 The key parts of getting started are understanding some basic concepts of YAML syntax and the building blocks of GitHub Actions.
@@ -235,16 +237,30 @@ They are made available via the `inputs` and `outputs` [contexts](./6-contexts/c
 
 # Reusable workflows and matrices 
 
-You can use reusable workflows and matrices to avoid duplication and make your workflows more maintainable.
+To avoid duplication and make your workflows more maintainable you can use one of two things.
 
-Reusable workflows can be stored either in your repository or in a public repository.
+Reusable workflows:
 
-Matrixes allow you define a `strategy` which will run a job multiple times with different values.
+- Reusable workflows can be stored either in your repository or in a public repository.
 
-The values that comprise the matrix can be accessed using the `matrix` context.
+- Any workflow can be made `reusable` by adding the `workflow_call` entry to the `on` directive of a workflow.
 
-The number of permutations is the cartesian product of the key value pairs for if you havw 2 pairs, and each has 2 values, there will be 4 job runs.
+- This type of workflow can accept inputs and secrets, and produce outputs.
+
+Matrixes:
+
+- Matrixes allow you define a `strategy` which will run a job multiple times with different values.
+
+- The values that comprise the matrix can be accessed using the `matrix` context.
+
+- The number of permutations is the cartesian product of the key value pairs for if you havw 2 pairs, and each has 2 values, there will be 4 job runs.
+
+NB  unlike custom actions, reusable workflows are __only available__ at the `job level` and not the `step level`.
+
+NB if the reusable workflow lives in another repository, best practice is to use a `personal access token` to allow access.
+
+Here are links to appropriate material:
 
 - [Matrixes notes](./14-matrixes/matrixes.md)
-- [Matrixes basic workflow example](./.github/workflows/14-matrixes-basics.yaml)
+- [Matrixes basic workflow basic example](./.github/workflows/14-matrixes-basics.yaml)
 - [Reusable workflow notes](./12-reusable-workflows/reusable-workflows.md)

@@ -8,6 +8,8 @@ jobs:
     name: "Check compatability for ${{ matrix.os }} with Node version ${{ matrix.version }}"
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: true
+      max-parallel: 2
       matrix:
         os : [ubuntu-latest, windows-latest]
         version: [18, 19, 20]
