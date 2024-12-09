@@ -60,7 +60,7 @@ The `includes` directive can be used to add new permutations to the matrix eithe
 
 The placement of properties in the `includes` directive is very important.
 
-If you place an additional property at the beginning of the includes array, it will only apply to permutations that appear before it:
+In the example below, we use includes to add an `opacity` property to all 8 existing permutations
 
 ```yaml
 include-example:
@@ -80,7 +80,7 @@ As you can see below, opacity was not applied to the red triangle since it appea
 
 <img src="../img/matrix-includes-1.png" width="700">
 
-Now, if we tweak this slightly, we can illustrate how includes can target one or more matrix segments:
+Next lets illustrate how to partially match matrix segments and add the opacity property.
 
 ```yaml
 include-example:
@@ -101,9 +101,11 @@ strategy:
         shape: triangle
 ```
 
-- If the shape is a circle, the opacity will be 100
 - If the color is red, the opacity will be 75
+- If the shape is a circle, the opacity will be 100
 - If not matched on shape or color e.g. green square, the opacity will be 50
+
+As you can see, they treated in __ascending order of precedence__, so a red circle will have opacity 100.
 
 <img src="../img/matrix-includes-2.png" width="700">
 
@@ -128,15 +130,9 @@ strategy:
       - opacity: 50
 ```
 
-Everything except red triangle uses opacity 50:
+Everything except red triangle uses opacity 50, because opacity 50 takes precedence __except__ if we have a permuation whose key value(s) do not exist in the matrix. :
 
 <img src="../img/matrix-includes-3.png" width="700">
-
-Let's explain all this behaviour in the next section.
-
-## Rationalising how include works
-
-TODO: complete
 
 # Excludes directive
 
@@ -169,11 +165,9 @@ strategy:
         shape: circle
 ```
 
-NB excludes will not apply to an includes permutation that contains a key value that does not exist.
+NB if an `include` permutation exists which is matched by an `exclude`, the include will always override .
 
-For example below, there is no `size` value of `medium` so the exclude directive is not applied.
-
-As you can see below, this means that we get a run for the medium green circle.
+For example below, we explicitly `include` a large green circle.
 
 ```yaml
 strategy:
@@ -184,10 +178,12 @@ strategy:
     include:
       - color: green
         shape: circle
-        size: medium
+        size: large
     exclude:
       - color: green
         shape: circle
 ```
+
+As you can see below, this means that we get a run for the large green circle, but not for other green circles.
 
 <img src="../img/matrix-excludes-caveat.png" width="700">
